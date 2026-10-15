@@ -1,0 +1,7 @@
+# Test logs and data written by the MATLAB GUIs
+logs/
+
+# Python / MATLAB build and autosave files
+__pycache__/
+*.pyc
+*.asv

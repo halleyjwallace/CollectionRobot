@@ -1,0 +1,22 @@
+# systemd service: starts pi_radio_relay.py at boot and restarts it if it stops.
+# Replace "pi" with your Pi user name (3 places) if it is different.
+#
+# Install:
+#   sudo cp robot-relay.service /etc/systemd/system/
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now robot-relay
+# Watch its output:
+#   journalctl -u robot-relay -f
+
+[Unit]
+Description=Water robot radio relay (NRF24 <-> Arduino)
+After=multi-user.target
+
+[Service]
+User=pi
+ExecStart=/home/pi/robot-venv/bin/python /home/pi/robot/pi_radio_relay.py
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target
